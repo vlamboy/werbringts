@@ -1,3 +1,5 @@
+[![.github/workflows/tests.yml](https://github.com/vlamboy/werbringts/actions/workflows/tests.yml/badge.svg)](https://github.com/vlamboy/werbringts/actions/workflows/tests.yml)
+
 # Was ist “werbringts”?
 
 werbringts unterstützt seine Nutzer:innen bei der Koordination der nächsten Party oder einem ähnlichen Anlass und hält sie auf dem Laufenden, was andere Gäste mitbringen. 
