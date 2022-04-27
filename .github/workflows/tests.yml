@@ -22,7 +22,7 @@ jobs:
           java-version: '15'
           distribution: 'adopt'
       - name: clean build
-          run: ./gradlew clean build --info --stacktrace
+        run: ./gradlew clean build --info --stacktrace
       - name: Run Backend Tests
-          run: ./gradlew test
+        run: ./gradlew test
 

@@ -8,7 +8,7 @@ class WerbringtsApplicationTests {
 
 	@Test
 	void contextLoads() {
-		throw new RuntimeException("only for testing");
+		// throw new RuntimeException("only for testing");
 	}
 
 }
