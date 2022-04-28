@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class WerbringtsApplicationTests {
 
-	//Test Deployment with Heroku after API connection
 
 	@Test
 	void contextLoads() {
