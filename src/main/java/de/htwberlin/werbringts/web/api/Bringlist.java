@@ -6,11 +6,13 @@ public class Bringlist {
 
     private long listId;
     private String listName;
+    private String listDescription;
     private List<Product> productList;
 
-    public Bringlist(long listId, String listName, List<Product> productList) {
+    public Bringlist(long listId, String listName, String listDescription, List<Product> productList) {
         this.listId = listId;
         this.listName = listName;
+        this.listDescription = listDescription;
         this.productList = productList;
     }
 
@@ -36,5 +38,13 @@ public class Bringlist {
 
     public void setProductList(List<Product> productList) {
         this.productList = productList;
+    }
+
+    public String getListDescription() {
+        return listDescription;
+    }
+
+    public void setListDescription(String listDescription) {
+        this.listDescription = listDescription;
     }
 }

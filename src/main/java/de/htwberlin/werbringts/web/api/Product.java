@@ -1,18 +1,20 @@
 package de.htwberlin.werbringts.web.api;
 
+import java.util.List;
+
 public class Product {
 
     private String productName;
     private int quantity;
-    private int quantityClosed;
-    private boolean status;
+    private List<Person> person;
+    private boolean isClosed;
 
 
-    public Product(String productName, int quantity, int quantityClosed, boolean status) {
+    public Product(String productName, int quantity, List<Person> person, boolean isClosed) {
         this.productName = productName;
         this.quantity = quantity;
-        this.quantityClosed = quantityClosed;
-        this.status = status;
+        this.person = person;
+        this.isClosed = isClosed;
     }
 
     public String getProductName() {
@@ -31,20 +33,20 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public int getQuantityClosed() {
-        return quantityClosed;
+    public List<Person> getPerson() {
+        return person;
     }
 
-    public void setQuantityClosed(int quantityClosed) {
-        this.quantityClosed = quantityClosed;
+    public void setPerson(List<Person> person) {
+        this.person = person;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isClosed() {
+        return isClosed;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setClosed(boolean closed) {
+        this.isClosed = closed;
     }
 
 
