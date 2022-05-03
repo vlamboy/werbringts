@@ -16,14 +16,15 @@ public class BringlistRestController {
     private List<Bringlist> bringlists;
     private List<Product> products;
     private List<Person> persons;
+    private Bringlist bringlist;
 
 
     public BringlistRestController() {
         persons = new ArrayList<>();
-        persons.add(new Person(1234, "Musterfrau", 0 ));
+        persons.add(new Person(1234, "Musterfrau" ));
 
         products = new ArrayList<>();
-        products.add(new Product("Testprodukt", 1, persons, false));
+        products.add(new Product(1, "SektTest", 10, bringlist, false));
 
         bringlists = new ArrayList<>();
         bringlists.add(new Bringlist(1, "Musterliste", "Testliste mit Test Attributen", products));
