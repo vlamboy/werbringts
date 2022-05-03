@@ -4,12 +4,10 @@ public class Person {
 
     private long personId;
     private String personName;
-    private int quantityBrought;
 
-    public Person(long personId, String personName, int quantityBrought) {
+    public Person(long personId, String personName) {
         this.personId = personId;
         this.personName = personName;
-        this.quantityBrought = quantityBrought;
     }
 
     public long getPersonId() {
@@ -28,11 +26,4 @@ public class Person {
         this.personName = personName;
     }
 
-    public int getQuantityBrought() {
-        return quantityBrought;
-    }
-
-    public void setQuantityBrought(int quantityBrought) {
-        this.quantityBrought = quantityBrought;
-    }
 }

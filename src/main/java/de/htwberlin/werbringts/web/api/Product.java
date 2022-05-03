@@ -4,17 +4,26 @@ import java.util.List;
 
 public class Product {
 
+    private long productId;
     private String productName;
-    private int quantity;
-    private List<Person> person;
+    private int quantityNeeded;
+    private Bringlist bringlist;
     private boolean isClosed;
 
-
-    public Product(String productName, int quantity, List<Person> person, boolean isClosed) {
+    public Product(long productId, String productName, int quantityNeeded, Bringlist bringlist, boolean isClosed) {
+        this.productId = productId;
         this.productName = productName;
-        this.quantity = quantity;
-        this.person = person;
+        this.quantityNeeded = quantityNeeded;
+        this.bringlist = bringlist;
         this.isClosed = isClosed;
+    }
+
+    public long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(long productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
@@ -25,20 +34,20 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getQuantityNeeded() {
+        return quantityNeeded;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantityNeeded(int quantityNeeded) {
+        this.quantityNeeded = quantityNeeded;
     }
 
-    public List<Person> getPerson() {
-        return person;
+    public Bringlist getBringlist() {
+        return bringlist;
     }
 
-    public void setPerson(List<Person> person) {
-        this.person = person;
+    public void setBringlist(Bringlist bringlist) {
+        this.bringlist = bringlist;
     }
 
     public boolean isClosed() {
@@ -46,8 +55,6 @@ public class Product {
     }
 
     public void setClosed(boolean closed) {
-        this.isClosed = closed;
+        isClosed = closed;
     }
-
-
 }
