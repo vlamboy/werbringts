@@ -9,13 +9,15 @@ public class Product {
     private int quantityNeeded;
     private long bringlistId;
     private boolean isClosed;
+    private List<Long> itemsBroughtId;
 
-    public Product(long productId, String productName, int quantityNeeded, long bringlistId, boolean isClosed) {
+    public Product(long productId, String productName, int quantityNeeded, long bringlistId, boolean isClosed, List<Long> itemsBroughtId) {
         this.productId = productId;
         this.productName = productName;
         this.quantityNeeded = quantityNeeded;
         this.bringlistId = bringlistId;
         this.isClosed = isClosed;
+        this.itemsBroughtId = itemsBroughtId;
     }
 
     public long getProductId() {
@@ -56,5 +58,13 @@ public class Product {
 
     public void setClosed(boolean closed) {
         isClosed = closed;
+    }
+
+    public List<Long> getItemsBroughtId() {
+        return itemsBroughtId;
+    }
+
+    public void setItemsBroughtId(List<Long> itemsBroughtId) {
+        this.itemsBroughtId = itemsBroughtId;
     }
 }

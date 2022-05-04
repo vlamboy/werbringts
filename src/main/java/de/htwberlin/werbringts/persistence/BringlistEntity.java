@@ -3,6 +3,7 @@ package de.htwberlin.werbringts.persistence;
 import de.htwberlin.werbringts.web.api.Product;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity (name = "bringlist")
@@ -10,8 +11,8 @@ public class BringlistEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long listId;
+    @Column(name = "bringListId")
+    private long bringlistId;
 
     @Column(name = "name", nullable = false)
     private String listName;
@@ -19,14 +20,21 @@ public class BringlistEntity {
     @Column(name = "listDescribtion")
     private String listDescription;
 
-    public BringlistEntity(long listId, String listName, String listDescription) {
-        this.listId = listId;
+    @OneToMany(mappedBy = "bringlistId", fetch = FetchType.EAGER)
+    private List<ProductEntity> products = new ArrayList<>();
+
+
+    public BringlistEntity(long bringlistId, String listName, String listDescription) {
+        this.bringlistId = bringlistId;
         this.listName = listName;
         this.listDescription = listDescription;
     }
 
-    public long getListId() {
-        return listId;
+    protected BringlistEntity() {
+    }
+
+    public long getBringlistId() {
+        return bringlistId;
     }
 
     public String getListName() {
@@ -45,4 +53,11 @@ public class BringlistEntity {
         this.listDescription = listDescription;
     }
 
+    public List<ProductEntity> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductEntity> products) {
+        this.products = products;
+    }
 }

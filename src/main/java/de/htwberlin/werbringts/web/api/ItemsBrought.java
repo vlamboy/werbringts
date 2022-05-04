@@ -1,24 +1,28 @@
 package de.htwberlin.werbringts.web.api;
 
+import java.util.List;
+
 public class ItemsBrought {
-    private long id;
+    private long itemsBroughtId;
     private Person person;
     private Product product;
     private int quantityBrought;
+    private List<Long> personId;
 
-    public ItemsBrought(long id, Person person, Product product, int quantityBrought) {
-        this.id = id;
+    public ItemsBrought(long itemsBroughtId, Person person, Product product, int quantityBrought, List<Long> personId) {
+        this.itemsBroughtId = itemsBroughtId;
         this.person = person;
         this.product = product;
         this.quantityBrought = quantityBrought;
+        this.personId = personId;
     }
 
-    public long getId() {
-        return id;
+    public long getItemsBroughtId() {
+        return itemsBroughtId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setItemsBroughtId(long itemsBroughtId) {
+        this.itemsBroughtId = itemsBroughtId;
     }
 
     public Person getPerson() {
@@ -43,5 +47,13 @@ public class ItemsBrought {
 
     public void setQuantityBrought(int quantityBrought) {
         this.quantityBrought = quantityBrought;
+    }
+
+    public List<Long> getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(List<Long> personId) {
+        this.personId = personId;
     }
 }

@@ -1,13 +1,18 @@
 package de.htwberlin.werbringts.web.api;
 
+import java.util.List;
+
 public class Person {
 
     private long personId;
     private String personName;
+    private List<Long> itemsBroughtId;
 
-    public Person(long personId, String personName) {
+
+    public Person(long personId, String personName, List<Long> itemsBroughtId) {
         this.personId = personId;
         this.personName = personName;
+        this.itemsBroughtId = itemsBroughtId;
     }
 
     public long getPersonId() {
@@ -26,4 +31,11 @@ public class Person {
         this.personName = personName;
     }
 
+    public List<Long> getItemsBroughtId() {
+        return itemsBroughtId;
+    }
+
+    public void setItemsBroughtId(List<Long> itemsBroughtId) {
+        this.itemsBroughtId = itemsBroughtId;
+    }
 }

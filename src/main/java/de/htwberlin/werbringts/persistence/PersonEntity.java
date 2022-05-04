@@ -1,18 +1,23 @@
 package de.htwberlin.werbringts.persistence;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "personEntity")
+@Entity(name = "person")
 public class PersonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "personId")
     private long personId;
 
     @Column(name = "personName")
     private String personName;
+
+    @OneToMany
+    @JoinColumn(name = "personId", referencedColumnName = "personId")
+    private List<ItemsBroughtEntity> itemsBrought = new ArrayList<>();
 
 
     public PersonEntity(long personId, String personName) {

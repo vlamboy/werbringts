@@ -27,7 +27,7 @@ public class BringlistRestController {
         products.add(new Product(1, "SektTest", 10, 1, false));
 
         bringlists = new ArrayList<>();
-        bringlists.add(new Bringlist(1, "Musterliste", "Testliste mit Test Attributen", products));
+        bringlists.add(new Bringlist(1, "Musterliste", "Testliste mit Test Attributen", 1));
 
     }
 

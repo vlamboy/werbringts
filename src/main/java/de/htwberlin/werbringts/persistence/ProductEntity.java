@@ -3,14 +3,15 @@ package de.htwberlin.werbringts.persistence;
 import de.htwberlin.werbringts.web.api.Person;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "productEntity")
+@Entity(name = "product")
 public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "productId")
     private long productId;
 
     @Column(name = "productName")
@@ -21,6 +22,13 @@ public class ProductEntity {
 
     @Column(name = "isClosed")
     private boolean isClosed;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "bringlistId", referencedColumnName = "bringlistId")
+    private BringlistEntity bringlist;
+
+    @OneToMany(mappedBy = "productId", fetch = FetchType.EAGER)
+    private List<ItemsBroughtEntity> itemsBrought = new ArrayList<>();
 
     public ProductEntity(long productId, String productName, int quantity, boolean isClosed) {
         this.productId = productId;
@@ -57,5 +65,13 @@ public class ProductEntity {
 
     public void setClosed(boolean closed) {
         isClosed = closed;
+    }
+
+    public BringlistEntity getBringlist() {
+        return bringlist;
+    }
+
+    public void setBringlist(BringlistEntity bringlist) {
+        this.bringlist = bringlist;
     }
 }

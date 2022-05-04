@@ -10,44 +10,30 @@ public class ItemsBroughtEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
-
-    @Column(name = "person")
-    private Person person;
-
-    @Column(name = "product")
-    private Product product;
+    @Column(name = "itemsBroughtId")
+    private long itemsBroughtId;
 
     @Column(name = "quantityBrought")
     private int quantityBrought;
 
-    public ItemsBroughtEntity(long id, Person person, Product product, int quantityBrought) {
-        this.id = id;
-        this.person = person;
-        this.product = product;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "productId", referencedColumnName = "productId")
+    private ProductEntity product;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "personId", referencedColumnName = "personId")
+    private PersonEntity person;
+
+
+    public ItemsBroughtEntity(long itemsBroughtId, int quantityBrought) {
+        this.itemsBroughtId = itemsBroughtId;
         this.quantityBrought = quantityBrought;
     }
 
-    public long getId() {
-        return id;
+    protected ItemsBroughtEntity() {
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+    public long getItemsBroughtId() {return itemsBroughtId;}
 
     public int getQuantityBrought() {
         return quantityBrought;
@@ -55,5 +41,21 @@ public class ItemsBroughtEntity {
 
     public void setQuantityBrought(int quantityBrought) {
         this.quantityBrought = quantityBrought;
+    }
+
+    public ProductEntity getProduct() {
+        return product;
+    }
+
+    public void setProduct(ProductEntity product) {
+        this.product = product;
+    }
+
+    public PersonEntity getPerson() {
+        return person;
+    }
+
+    public void setPerson(PersonEntity person) {
+        this.person = person;
     }
 }

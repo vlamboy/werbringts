@@ -4,23 +4,25 @@ import java.util.List;
 
 public class Bringlist {
 
-    private long listId;
+    private long bringlistId;
     private String listName;
     private String listDescription;
+    private List<Long> productId;
 
 
-    public Bringlist(long listId, String listName, String listDescription, List<Product> productList) {
-        this.listId = listId;
+    public Bringlist(long bringlistId, String listName, String listDescription, List<Long> productId) {
+        this.bringlistId = bringlistId;
         this.listName = listName;
         this.listDescription = listDescription;
+        this.productId = productId;
     }
 
-    public long getListId() {
-        return listId;
+    public long getBringlistId() {
+        return bringlistId;
     }
 
-    public void setListId(long listId) {
-        this.listId = listId;
+    public void setBringlistId(long listId) {
+        this.bringlistId = bringlistId;
     }
 
     public String getListName() {
@@ -37,5 +39,13 @@ public class Bringlist {
 
     public void setListDescription(String listDescription) {
         this.listDescription = listDescription;
+    }
+
+    public List<Long> getProductId() {
+        return productId;
+    }
+
+    public void setProductId(List<Long> productId) {
+        this.productId = productId;
     }
 }
