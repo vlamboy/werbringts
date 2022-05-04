@@ -19,7 +19,7 @@ public class BringlistEntity {
     @Column(name = "listDescribtion")
     private String listDescription;
 
-    public BringlistEntity(long listId, String listName, String listDescription, List<ProductEntity> productList) {
+    public BringlistEntity(long listId, String listName, String listDescription) {
         this.listId = listId;
         this.listName = listName;
         this.listDescription = listDescription;

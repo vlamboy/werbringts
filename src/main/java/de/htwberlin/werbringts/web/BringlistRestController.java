@@ -16,7 +16,7 @@ public class BringlistRestController {
     private List<Bringlist> bringlists;
     private List<Product> products;
     private List<Person> persons;
-    private Bringlist bringlist;
+   // private Bringlist bringlist;
 
 
     public BringlistRestController() {
@@ -24,10 +24,11 @@ public class BringlistRestController {
         persons.add(new Person(1234, "Musterfrau" ));
 
         products = new ArrayList<>();
-        products.add(new Product(1, "SektTest", 10, bringlist, false));
+        products.add(new Product(1, "SektTest", 10, 1, false));
 
         bringlists = new ArrayList<>();
         bringlists.add(new Bringlist(1, "Musterliste", "Testliste mit Test Attributen", products));
+
     }
 
     @GetMapping(path = "/api/v1/bringlists")

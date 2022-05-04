@@ -7,14 +7,14 @@ public class Product {
     private long productId;
     private String productName;
     private int quantityNeeded;
-    private Bringlist bringlist;
+    private long bringlistId;
     private boolean isClosed;
 
-    public Product(long productId, String productName, int quantityNeeded, Bringlist bringlist, boolean isClosed) {
+    public Product(long productId, String productName, int quantityNeeded, long bringlistId, boolean isClosed) {
         this.productId = productId;
         this.productName = productName;
         this.quantityNeeded = quantityNeeded;
-        this.bringlist = bringlist;
+        this.bringlistId = bringlistId;
         this.isClosed = isClosed;
     }
 
@@ -42,12 +42,12 @@ public class Product {
         this.quantityNeeded = quantityNeeded;
     }
 
-    public Bringlist getBringlist() {
-        return bringlist;
+    public long getBringlistId() {
+        return bringlistId;
     }
 
-    public void setBringlist(Bringlist bringlist) {
-        this.bringlist = bringlist;
+    public void setBringlistId(long bringlistId) {
+        this.bringlistId = bringlistId;
     }
 
     public boolean isClosed() {

@@ -5,6 +5,7 @@ import de.htwberlin.werbringts.web.api.Person;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity(name = "productEntity")
 public class ProductEntity {
 
     @Id

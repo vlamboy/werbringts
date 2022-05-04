@@ -3,11 +3,9 @@ package de.htwberlin.werbringts.persistence;
 import de.htwberlin.werbringts.web.api.Person;
 import de.htwberlin.werbringts.web.api.Product;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity(name = "itemsBrought")
 public class ItemsBroughtEntity {
 
     @Id

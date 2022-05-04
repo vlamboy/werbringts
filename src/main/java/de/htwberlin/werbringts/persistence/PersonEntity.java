@@ -3,6 +3,7 @@ package de.htwberlin.werbringts.persistence;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity(name = "personEntity")
 public class PersonEntity {
 
     @Id
