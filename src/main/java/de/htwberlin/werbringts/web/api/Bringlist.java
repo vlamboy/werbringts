@@ -4,7 +4,9 @@ import java.util.List;
 
 public class Bringlist {
 
-   li
+    private long listId;
+    private String listName;
+    private String listDescription;
 
 
     public Bringlist(long listId, String listName, String listDescription, List<Product> productList) {
