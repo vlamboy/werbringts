@@ -11,7 +11,7 @@ public class BringlistEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bringListId")
+    @Column(name = "bringlistId")
     private long bringlistId;
 
     @Column(name = "name", nullable = false)
@@ -20,7 +20,7 @@ public class BringlistEntity {
     @Column(name = "listDescribtion")
     private String listDescription;
 
-    @OneToMany(mappedBy = "bringlistId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "bringlist", fetch = FetchType.EAGER)
     private List<ProductEntity> products = new ArrayList<>();
 
 

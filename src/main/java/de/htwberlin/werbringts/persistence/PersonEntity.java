@@ -15,8 +15,7 @@ public class PersonEntity {
     @Column(name = "personName")
     private String personName;
 
-    @OneToMany
-    @JoinColumn(name = "personId", referencedColumnName = "personId")
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
     private List<ItemsBroughtEntity> itemsBrought = new ArrayList<>();
 
 
@@ -39,4 +38,11 @@ public class PersonEntity {
         this.personName = personName;
     }
 
+    public List<ItemsBroughtEntity> getItemsBrought() {
+        return itemsBrought;
+    }
+
+    public void setItemsBrought(List<ItemsBroughtEntity> itemsBrought) {
+        this.itemsBrought = itemsBrought;
+    }
 }

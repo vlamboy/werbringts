@@ -17,6 +17,7 @@ public class Bringlist {
         this.productId = productId;
     }
 
+
     public long getBringlistId() {
         return bringlistId;
     }

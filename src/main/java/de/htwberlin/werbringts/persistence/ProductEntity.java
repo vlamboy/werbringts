@@ -27,14 +27,15 @@ public class ProductEntity {
     @JoinColumn(name = "bringlistId", referencedColumnName = "bringlistId")
     private BringlistEntity bringlist;
 
-    @OneToMany(mappedBy = "productId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<ItemsBroughtEntity> itemsBrought = new ArrayList<>();
 
-    public ProductEntity(long productId, String productName, int quantity, boolean isClosed) {
+    public ProductEntity(long productId, String productName, int quantity, boolean isClosed, BringlistEntity bringlist) {
         this.productId = productId;
         this.productName = productName;
         this.quantity = quantity;
         this.isClosed = isClosed;
+        this.bringlist = bringlist;
     }
 
     protected ProductEntity() {}
@@ -73,5 +74,13 @@ public class ProductEntity {
 
     public void setBringlist(BringlistEntity bringlist) {
         this.bringlist = bringlist;
+    }
+
+    public List<ItemsBroughtEntity> getItemsBrought() {
+        return itemsBrought;
+    }
+
+    public void setItemsBrought(List<ItemsBroughtEntity> itemsBrought) {
+        this.itemsBrought = itemsBrought;
     }
 }

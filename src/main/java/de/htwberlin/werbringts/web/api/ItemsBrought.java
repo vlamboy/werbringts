@@ -4,17 +4,18 @@ import java.util.List;
 
 public class ItemsBrought {
     private long itemsBroughtId;
-    private Person person;
-    private Product product;
+    //private Person person;
+    private Long personId;
+    private Long productId;
+    //rivate Product product;
     private int quantityBrought;
-    private List<Long> personId;
 
-    public ItemsBrought(long itemsBroughtId, Person person, Product product, int quantityBrought, List<Long> personId) {
+
+    public ItemsBrought(long itemsBroughtId, Long personId, Long productId, int quantityBrought) {
         this.itemsBroughtId = itemsBroughtId;
-        this.person = person;
-        this.product = product;
-        this.quantityBrought = quantityBrought;
         this.personId = personId;
+        this.productId = productId;
+        this.quantityBrought = quantityBrought;
     }
 
     public long getItemsBroughtId() {
@@ -25,22 +26,6 @@ public class ItemsBrought {
         this.itemsBroughtId = itemsBroughtId;
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     public int getQuantityBrought() {
         return quantityBrought;
     }
@@ -49,11 +34,19 @@ public class ItemsBrought {
         this.quantityBrought = quantityBrought;
     }
 
-    public List<Long> getPersonId() {
+    public Long getPersonId() {
         return personId;
     }
 
-    public void setPersonId(List<Long> personId) {
+    public void setPersonId(Long personId) {
         this.personId = personId;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 }
