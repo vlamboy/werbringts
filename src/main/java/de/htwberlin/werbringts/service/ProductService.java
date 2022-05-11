@@ -1,11 +1,10 @@
 package de.htwberlin.werbringts.service;
 
-import de.htwberlin.werbringts.persistence.BringlistEntity;
 import de.htwberlin.werbringts.persistence.ItemsBroughtEntity;
 import de.htwberlin.werbringts.persistence.ProductEntity;
 import de.htwberlin.werbringts.persistence.ProductRepository;
-import de.htwberlin.werbringts.web.api.Bringlist;
 import de.htwberlin.werbringts.web.api.Product;
+import de.htwberlin.werbringts.web.api.ProductCreateRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +20,27 @@ public class ProductService {
     }
 
     public List<Product> findAll(){
-        List<ProductEntity> products = productRepository.findAll();
-        return products.stream().map(productEntity -> new Product(productEntity.getProductId(), productEntity.getProductName(), productEntity.getQuantity(), productEntity.isClosed(), productEntity.getBringlist().getBringlistId(), productEntity.getItemsBrought().stream().map(ItemsBroughtEntity::getItemsBroughtId).collect(Collectors.toList()))).collect(Collectors.toList());
+        List<ProductEntity> product = productRepository.findAll();
+        return product.stream().map(this::transformEntity).collect(Collectors.toList());
+    }
+
+    public Product create(ProductCreateRequest request){
+        var productEntity = new ProductEntity(request.getProductName(), request.getQuantity(), request.isClosed(), request.);
+        productEntity = productRepository.save(productEntity);
+        return transformEntity(productEntity);
+    }
+
+
+    private Product transformEntity(ProductEntity productEntity){
+        return new Product(
+                productEntity.getProductId(),
+                productEntity.getProductName(),
+                productEntity.getQuantity(),
+                productEntity.isClosed(),
+                productEntity.getBringlist().getBringlistId(),
+                productEntity.getItemsBrought().stream().map(ItemsBroughtEntity::getItemsBroughtId).collect(Collectors.toList())
+
+        );
     }
 
 

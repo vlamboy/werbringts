@@ -2,31 +2,19 @@ package de.htwberlin.werbringts.web.api;
 
 import java.util.List;
 
-public class Product {
-
-    private long productId;
+public class ProductCreateRequest {
     private String productName;
-    private int quatity;
+    private int quantity;
     private boolean isClosed;
     private long bringlistId;
     private List<Long> itemsBroughtId;
 
-
-    public Product(long productId, String productName, int quatity, boolean isClosed, long bringlistId, List<Long> itemsBroughtId) {
-        this.productId = productId;
+    public ProductCreateRequest(String productName, int quantityNeeded, boolean isClosed, long bringlistId, List<Long> itemsBroughtId) {
         this.productName = productName;
-        this.quatity = quatity;
+        this.quantity = quantityNeeded;
         this.isClosed = isClosed;
         this.bringlistId = bringlistId;
         this.itemsBroughtId = itemsBroughtId;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
     }
 
     public String getProductName() {
@@ -37,20 +25,12 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getQuatity() {
-        return quatity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuatity(int quatity) {
-        this.quatity = quatity;
-    }
-
-    public long getBringlistId() {
-        return bringlistId;
-    }
-
-    public void setBringlistId(long bringlistId) {
-        this.bringlistId = bringlistId;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public boolean isClosed() {
@@ -61,6 +41,14 @@ public class Product {
         isClosed = closed;
     }
 
+    public long getBringlistId() {
+        return bringlistId;
+    }
+
+    public void setBringlistId(long bringlistId) {
+        this.bringlistId = bringlistId;
+    }
+
     public List<Long> getItemsBroughtId() {
         return itemsBroughtId;
     }
@@ -68,4 +56,5 @@ public class Product {
     public void setItemsBroughtId(List<Long> itemsBroughtId) {
         this.itemsBroughtId = itemsBroughtId;
     }
+
 }

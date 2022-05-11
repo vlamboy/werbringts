@@ -20,8 +20,8 @@ public class BringlistService {
     }
 
     public List<Bringlist> findAll(){
-        List<BringlistEntity> bringlists = bringlistRepository.findAll();
-        return bringlists.stream().map(this::transformEntity).collect(Collectors.toList());
+        List<BringlistEntity> bringlist = bringlistRepository.findAll();
+        return bringlist.stream().map(this::transformEntity).collect(Collectors.toList());
     }
 
     public Bringlist create(BringlistCreateRequest request){

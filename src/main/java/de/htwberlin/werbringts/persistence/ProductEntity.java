@@ -30,13 +30,13 @@ public class ProductEntity {
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<ItemsBroughtEntity> itemsBrought = new ArrayList<>();
 
-    public ProductEntity(long productId, String productName, int quantity, boolean isClosed, BringlistEntity bringlist) {
-        this.productId = productId;
+    public ProductEntity(String productName, int quantity, boolean isClosed, BringlistEntity bringlist) {
         this.productName = productName;
         this.quantity = quantity;
         this.isClosed = isClosed;
         this.bringlist = bringlist;
     }
+
 
     protected ProductEntity() {}
 
