@@ -40,5 +40,4 @@ public class BringlistService {
                 bringlistEntity.getProducts().stream().map(ProductEntity::getProductId).collect(Collectors.toList())
         );
     }
-
 }
