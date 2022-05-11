@@ -24,8 +24,7 @@ public class BringlistEntity {
     private List<ProductEntity> products = new ArrayList<>();
 
 
-    public BringlistEntity(long bringlistId, String listName, String listDescription) {
-        this.bringlistId = bringlistId;
+    public BringlistEntity(String listName, String listDescription) {
         this.listName = listName;
         this.listDescription = listDescription;
     }
