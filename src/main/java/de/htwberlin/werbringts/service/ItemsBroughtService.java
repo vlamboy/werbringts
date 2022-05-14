@@ -2,8 +2,10 @@ package de.htwberlin.werbringts.service;
 
 import de.htwberlin.werbringts.persistence.ItemsBroughtEntity;
 import de.htwberlin.werbringts.persistence.ItemsBroughtRepository;
+import de.htwberlin.werbringts.persistence.PersonEntity;
 import de.htwberlin.werbringts.persistence.ProductEntity;
 import de.htwberlin.werbringts.web.api.ItemsBrought;
+import de.htwberlin.werbringts.web.api.ItemsBroughtCreateRequest;
 import de.htwberlin.werbringts.web.api.Product;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,23 @@ public class ItemsBroughtService {
 
     public List<ItemsBrought> findAll(){
         List<ItemsBroughtEntity> itemsBrought = itemsBroughtRepository.findAll();
-        return itemsBrought.stream().map(itemsBroughtEntity -> new ItemsBrought(itemsBroughtEntity.getItemsBroughtId(), itemsBroughtEntity.getPerson().getPersonId(), itemsBroughtEntity.getProduct().getProductId(), itemsBroughtEntity.getQuantityBrought() )).collect(Collectors.toList());
+        return itemsBrought.stream().map(this::transformEntity)
+                .collect(Collectors.toList());
+    }
+
+    public ItemsBrought create(ItemsBroughtCreateRequest request){
+        var itemsBroughtEntity = new ItemsBroughtEntity(request.getQuantityBrought());
+        itemsBroughtRepository.save(itemsBroughtEntity);
+        return transformEntity(itemsBroughtEntity);
+
+    }
+
+    private ItemsBrought transformEntity(ItemsBroughtEntity itemsBroughtEntity){
+        return new ItemsBrought(
+                itemsBroughtEntity.getItemsBroughtId(),
+                itemsBroughtEntity.getPerson().getPersonId(),
+                itemsBroughtEntity.getProduct().getProductId(),
+                itemsBroughtEntity.getQuantityBrought()
+        );
     }
 }

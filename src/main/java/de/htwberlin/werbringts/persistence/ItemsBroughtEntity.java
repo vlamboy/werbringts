@@ -25,8 +25,7 @@ public class ItemsBroughtEntity {
     private PersonEntity person;
 
 
-    public ItemsBroughtEntity(long itemsBroughtId, int quantityBrought) {
-        this.itemsBroughtId = itemsBroughtId;
+    public ItemsBroughtEntity (int quantityBrought) {
         this.quantityBrought = quantityBrought;
     }
 

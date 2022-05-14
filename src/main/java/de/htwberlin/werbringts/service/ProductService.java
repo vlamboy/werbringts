@@ -25,7 +25,7 @@ public class ProductService {
     }
 
     public Product create(ProductCreateRequest request){
-        var productEntity = new ProductEntity(request.getProductName(), request.getQuantity(), request.isClosed(), request.);
+        var productEntity = new ProductEntity(request.getProductName(), request.getQuantity(), request.isClosed());
         productEntity = productRepository.save(productEntity);
         return transformEntity(productEntity);
     }

@@ -19,8 +19,7 @@ public class PersonEntity {
     private List<ItemsBroughtEntity> itemsBrought = new ArrayList<>();
 
 
-    public PersonEntity(long personId, String personName) {
-        this.personId = personId;
+    public PersonEntity(String personName) {
         this.personName = personName;
     }
 
