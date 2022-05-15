@@ -1,5 +1,6 @@
 package de.htwberlin.werbringts.persistence;
 
+import de.htwberlin.werbringts.web.api.Bringlist;
 import de.htwberlin.werbringts.web.api.Person;
 
 import javax.persistence.*;
@@ -30,11 +31,11 @@ public class ProductEntity {
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<ItemsBroughtEntity> itemsBrought = new ArrayList<>();
 
-    public ProductEntity(String productName, int quantity, boolean isClosed) {
+    public ProductEntity(String productName, int quantity, boolean isClosed, BringlistEntity bringlist) {
         this.productName = productName;
         this.quantity = quantity;
         this.isClosed = isClosed;
-//        this.bringlist = bringlist;
+        this.bringlist = bringlist;
     }
 
 

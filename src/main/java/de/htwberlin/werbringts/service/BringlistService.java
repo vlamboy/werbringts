@@ -31,6 +31,14 @@ public class BringlistService {
         return transformEntity(bringlistEntity);
     }
 
+    public boolean deleteById(Long id){
+        if (!bringlistRepository.existsById(id)){
+            return false;
+        }
+        bringlistRepository.deleteById(id);
+        return true;
+    }
+
     private Bringlist transformEntity(BringlistEntity bringlistEntity){
 
         return new Bringlist(

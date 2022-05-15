@@ -1,13 +1,11 @@
 package de.htwberlin.werbringts.web;
 
 import de.htwberlin.werbringts.service.PersonService;
+import de.htwberlin.werbringts.web.api.ItemsBrought;
 import de.htwberlin.werbringts.web.api.Person;
 import de.htwberlin.werbringts.web.api.PersonCreateRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -32,6 +30,18 @@ public class PersonRestController {
         var person = personService.create(request);
         URI uri = new URI("/api/v1/persons" + person.getPersonId());
         return ResponseEntity.created(uri).build();
+    }
+
+    @PutMapping(path = "/api/v1/persons/{id}")
+    public ResponseEntity<Person> updatePerson(@PathVariable Long id, @RequestBody PersonManipulationRequest request) {
+        var person =  personService.update(id, request);
+        return person != null? ResponseEntity.ok(person) : ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping(path = "/api/v1/persons/{id}")
+    public ResponseEntity<Void> deletePerson(@PathVariable Long id) {
+        boolean successful = personService.deleteById(id);
+        return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
 }

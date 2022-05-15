@@ -29,8 +29,7 @@ public class BringlistEntity {
         this.listDescription = listDescription;
     }
 
-    protected BringlistEntity() {
-    }
+    protected BringlistEntity() {}
 
     public long getBringlistId() {
         return bringlistId;

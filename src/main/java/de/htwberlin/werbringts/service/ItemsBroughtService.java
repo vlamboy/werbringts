@@ -35,6 +35,14 @@ public class ItemsBroughtService {
 
     }
 
+    public boolean deleteById(Long id){
+        if (!itemsBroughtRepository.existsById(id)){
+            return false;
+        }
+        itemsBroughtRepository.deleteById(id);
+        return true;
+    }
+
     private ItemsBrought transformEntity(ItemsBroughtEntity itemsBroughtEntity){
         return new ItemsBrought(
                 itemsBroughtEntity.getItemsBroughtId(),

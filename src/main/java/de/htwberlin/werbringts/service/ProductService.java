@@ -25,11 +25,18 @@ public class ProductService {
     }
 
     public Product create(ProductCreateRequest request){
-        var productEntity = new ProductEntity(request.getProductName(), request.getQuantity(), request.isClosed());
+        var productEntity = new ProductEntity(request.getProductName(), request.getQuantity(), request.isClosed(), request.getBringlist());
         productEntity = productRepository.save(productEntity);
         return transformEntity(productEntity);
     }
 
+    public boolean deleteById(Long id){
+        if (!productRepository.existsById(id)){
+            return false;
+        }
+        productRepository.deleteById(id);
+        return true;
+    }
 
     private Product transformEntity(ProductEntity productEntity){
         return new Product(

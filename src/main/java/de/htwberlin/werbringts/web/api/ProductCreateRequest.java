@@ -1,19 +1,21 @@
 package de.htwberlin.werbringts.web.api;
 
+import de.htwberlin.werbringts.persistence.BringlistEntity;
+
 import java.util.List;
 
 public class ProductCreateRequest {
     private String productName;
     private int quantity;
     private boolean isClosed;
-    private long bringlistId;
+    private BringlistEntity bringlist;
     private List<Long> itemsBroughtId;
 
-    public ProductCreateRequest(String productName, int quantityNeeded, boolean isClosed, long bringlistId, List<Long> itemsBroughtId) {
+    public ProductCreateRequest(String productName, int quantityNeeded, boolean isClosed, BringlistEntity bringlist, List<Long> itemsBroughtId) {
         this.productName = productName;
         this.quantity = quantityNeeded;
         this.isClosed = isClosed;
-        this.bringlistId = bringlistId;
+        this.bringlist = bringlist;
         this.itemsBroughtId = itemsBroughtId;
     }
 
@@ -41,13 +43,17 @@ public class ProductCreateRequest {
         isClosed = closed;
     }
 
-    public long getBringlistId() {
-        return bringlistId;
+    public BringlistEntity getBringlist() {
+        return bringlist;
     }
 
-    public void setBringlistId(long bringlistId) {
-        this.bringlistId = bringlistId;
+    public void setBringlist(BringlistEntity bringlist) {
+        this.bringlist = bringlist;
     }
+
+    //public long getBringlistId() {return bringlistId;}
+
+    //public void setBringlistId(long bringlistId) {this.bringlistId = bringlistId;}
 
     public List<Long> getItemsBroughtId() {
         return itemsBroughtId;

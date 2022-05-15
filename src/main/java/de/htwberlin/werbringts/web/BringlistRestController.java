@@ -4,10 +4,7 @@ import de.htwberlin.werbringts.service.BringlistService;
 import de.htwberlin.werbringts.web.api.Bringlist;
 import de.htwberlin.werbringts.web.api.BringlistCreateRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -34,6 +31,18 @@ public class BringlistRestController {
         var bringlist =  bringlistService.create(request);
                 URI uri = new URI("/api/v1/bringlists" + bringlist.getBringlistId());
         return ResponseEntity.created(uri).build();
+    }
+
+    @PutMapping(path = "/api/v1/bringlists/{id}")
+    public ResponseEntity<Bringlist> updateBringlist(@PathVariable Long id, @RequestBody BringlistManipulationRequest request) {
+        var bringlist =  bringlistService.update(id, request);
+        return bringlist != null? ResponseEntity.ok(bringlist) : ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping(path = "/api/v1/bringlists/{id}")
+    public ResponseEntity<Void> deleteBringlist(@PathVariable Long id) {
+        boolean successful = bringlistService.deleteById(id);
+        return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
 }
