@@ -2,7 +2,7 @@ package de.htwberlin.werbringts.web;
 
 import de.htwberlin.werbringts.service.BringlistService;
 import de.htwberlin.werbringts.web.api.Bringlist;
-import de.htwberlin.werbringts.web.api.BringlistCreateRequest;
+import de.htwberlin.werbringts.web.api.BringlistManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +27,7 @@ public class BringlistRestController {
 
 
     @PostMapping (path = "/api/v1/bringlists")
-    public ResponseEntity<Void> createBringlist(@RequestBody BringlistCreateRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createBringlist(@RequestBody BringlistManipulationRequest request) throws URISyntaxException {
         var bringlist =  bringlistService.create(request);
                 URI uri = new URI("/api/v1/bringlists" + bringlist.getBringlistId());
         return ResponseEntity.created(uri).build();

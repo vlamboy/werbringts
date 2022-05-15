@@ -1,9 +1,7 @@
 package de.htwberlin.werbringts.web;
 import de.htwberlin.werbringts.service.ProductService;
-import de.htwberlin.werbringts.web.api.BringlistCreateRequest;
-import de.htwberlin.werbringts.web.api.Person;
 import de.htwberlin.werbringts.web.api.Product;
-import de.htwberlin.werbringts.web.api.ProductCreateRequest;
+import de.htwberlin.werbringts.web.api.ProductManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +25,7 @@ public class ProductRestController {
     }
 
     @PostMapping(path = "/api/v1/products")
-    public ResponseEntity<Void> createProduct(@RequestBody ProductCreateRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createProduct(@RequestBody ProductManipulationRequest request) throws URISyntaxException {
         var product =  productService.create(request);
         URI uri = new URI("/api/v1/products" + product.getProductId());
         return ResponseEntity.created(uri).build();

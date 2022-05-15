@@ -1,9 +1,10 @@
 package de.htwberlin.werbringts.service;
 
 import de.htwberlin.werbringts.persistence.*;
+import de.htwberlin.werbringts.web.api.ItemsBrought;
+import de.htwberlin.werbringts.web.api.ItemsBroughtManipulationRequest;
 import de.htwberlin.werbringts.web.api.Person;
-import de.htwberlin.werbringts.web.api.PersonCreateRequest;
-import de.htwberlin.werbringts.web.api.Product;
+import de.htwberlin.werbringts.web.api.PersonManipulationRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,9 +26,23 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
-    public Person create(PersonCreateRequest request){
+    public Person create(PersonManipulationRequest request){
         var personEntity = new PersonEntity(request.getPersonName());
         personEntity = personRepository.save(personEntity);
+        return transformEntity(personEntity);
+    }
+
+
+    public Person update (Long id, PersonManipulationRequest request){
+        var personEntityOptional = personRepository.findById(id);
+        if (personEntityOptional.isEmpty()){
+            return null;
+        }
+
+        var personEntity = personEntityOptional.get();
+        personEntity.setPersonName(request.getPersonName());
+      //  personEntity.setItemsBrought(request.getItemsBroughtId());
+
         return transformEntity(personEntity);
     }
 

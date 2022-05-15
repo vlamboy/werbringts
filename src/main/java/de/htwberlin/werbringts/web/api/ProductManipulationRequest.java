@@ -4,14 +4,14 @@ import de.htwberlin.werbringts.persistence.BringlistEntity;
 
 import java.util.List;
 
-public class ProductCreateRequest {
+public class ProductManipulationRequest {
     private String productName;
     private int quantity;
     private boolean isClosed;
     private BringlistEntity bringlist;
     private List<Long> itemsBroughtId;
 
-    public ProductCreateRequest(String productName, int quantityNeeded, boolean isClosed, BringlistEntity bringlist, List<Long> itemsBroughtId) {
+    public ProductManipulationRequest(String productName, int quantityNeeded, boolean isClosed, BringlistEntity bringlist, List<Long> itemsBroughtId) {
         this.productName = productName;
         this.quantity = quantityNeeded;
         this.isClosed = isClosed;

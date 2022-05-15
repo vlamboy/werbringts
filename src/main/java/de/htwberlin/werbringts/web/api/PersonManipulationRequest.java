@@ -2,12 +2,12 @@ package de.htwberlin.werbringts.web.api;
 
 import java.util.List;
 
-public class PersonCreateRequest {
+public class PersonManipulationRequest {
 
     private String personName;
     private List<Long> itemsBroughtId;
 
-    public PersonCreateRequest(String personName, List<Long> itemsBroughtId) {
+    public PersonManipulationRequest(String personName, List<Long> itemsBroughtId) {
         this.personName = personName;
         this.itemsBroughtId = itemsBroughtId;
     }

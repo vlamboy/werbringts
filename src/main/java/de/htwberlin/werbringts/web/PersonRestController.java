@@ -1,9 +1,8 @@
 package de.htwberlin.werbringts.web;
 
 import de.htwberlin.werbringts.service.PersonService;
-import de.htwberlin.werbringts.web.api.ItemsBrought;
 import de.htwberlin.werbringts.web.api.Person;
-import de.htwberlin.werbringts.web.api.PersonCreateRequest;
+import de.htwberlin.werbringts.web.api.PersonManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +25,7 @@ public class PersonRestController {
     }
 
     @PostMapping(path = "/api/v1/persons")
-    public ResponseEntity<Void> createPerson(@RequestBody PersonCreateRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createPerson(@RequestBody PersonManipulationRequest request) throws URISyntaxException {
         var person = personService.create(request);
         URI uri = new URI("/api/v1/persons" + person.getPersonId());
         return ResponseEntity.created(uri).build();

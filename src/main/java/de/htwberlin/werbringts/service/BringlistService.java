@@ -4,7 +4,7 @@ import de.htwberlin.werbringts.persistence.BringlistEntity;
 import de.htwberlin.werbringts.persistence.BringlistRepository;
 import de.htwberlin.werbringts.persistence.ProductEntity;
 import de.htwberlin.werbringts.web.api.Bringlist;
-import de.htwberlin.werbringts.web.api.BringlistCreateRequest;
+import de.htwberlin.werbringts.web.api.BringlistManipulationRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,10 +24,24 @@ public class BringlistService {
         return bringlist.stream().map(this::transformEntity).collect(Collectors.toList());
     }
 
-    public Bringlist create(BringlistCreateRequest request){
+    public Bringlist create(BringlistManipulationRequest request){
         var bringlistEntity = new BringlistEntity(request.getListName(), request.getListDescription());
         bringlistEntity = bringlistRepository.save(bringlistEntity);
 
+        return transformEntity(bringlistEntity);
+    }
+
+    public Bringlist update (Long id, BringlistManipulationRequest request){
+        var bringlistEntityOptional = bringlistRepository.findById(id);
+        if (bringlistEntityOptional.isEmpty()){
+            return null;
+        }
+
+        var bringlistEntity = bringlistEntityOptional.get();
+        bringlistEntity.setListName(request.getListName());
+        bringlistEntity.setListDescription(request.getListDescription());
+ //       bringlistEntity.setProducts(request.getProductId());
+        bringlistEntity = bringlistRepository.save(bringlistEntity);
         return transformEntity(bringlistEntity);
     }
 

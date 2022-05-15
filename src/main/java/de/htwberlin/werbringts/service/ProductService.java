@@ -3,8 +3,10 @@ package de.htwberlin.werbringts.service;
 import de.htwberlin.werbringts.persistence.ItemsBroughtEntity;
 import de.htwberlin.werbringts.persistence.ProductEntity;
 import de.htwberlin.werbringts.persistence.ProductRepository;
+import de.htwberlin.werbringts.web.api.Person;
+import de.htwberlin.werbringts.web.api.PersonManipulationRequest;
 import de.htwberlin.werbringts.web.api.Product;
-import de.htwberlin.werbringts.web.api.ProductCreateRequest;
+import de.htwberlin.werbringts.web.api.ProductManipulationRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,9 +26,25 @@ public class ProductService {
         return product.stream().map(this::transformEntity).collect(Collectors.toList());
     }
 
-    public Product create(ProductCreateRequest request){
+    public Product create(ProductManipulationRequest request){
         var productEntity = new ProductEntity(request.getProductName(), request.getQuantity(), request.isClosed(), request.getBringlist());
         productEntity = productRepository.save(productEntity);
+        return transformEntity(productEntity);
+    }
+
+    public Product update (Long id, ProductManipulationRequest request){
+        var productEntityOptional = productRepository.findById(id);
+        if (productEntityOptional.isEmpty()){
+            return null;
+        }
+
+        var productEntity = productEntityOptional.get();
+        productEntity.setProductName(request.getProductName());
+        productEntity.setQuantity(request.getQuantity());
+     //   productEntity.setClosed(request.getClosed);
+        productEntity.setBringlist(request.getBringlist());
+       // productEntity.setItemsBrought(request.getItemsBroughtId());
+
         return transformEntity(productEntity);
     }
 

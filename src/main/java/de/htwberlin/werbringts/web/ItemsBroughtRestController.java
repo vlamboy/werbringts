@@ -2,9 +2,8 @@ package de.htwberlin.werbringts.web;
 
 
 import de.htwberlin.werbringts.service.ItemsBroughtService;
-import de.htwberlin.werbringts.web.api.Bringlist;
 import de.htwberlin.werbringts.web.api.ItemsBrought;
-import de.htwberlin.werbringts.web.api.ItemsBroughtCreateRequest;
+import de.htwberlin.werbringts.web.api.ItemsBroughtManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +26,7 @@ public class ItemsBroughtRestController {
     }
 
     @PostMapping(path = "/api/v1/itemsBrought")
-    public ResponseEntity<Void> createItemsBrought(@RequestBody ItemsBroughtCreateRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createItemsBrought(@RequestBody ItemsBroughtManipulationRequest request) throws URISyntaxException {
         var itemsBrought = itemsBroughtService.create(request);
         URI uri = new URI("/api/v1/itemsBrought" + itemsBrought.getItemsBroughtId());
         return ResponseEntity.created(uri).build();

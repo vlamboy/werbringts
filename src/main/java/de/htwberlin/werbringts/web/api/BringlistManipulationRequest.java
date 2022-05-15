@@ -2,13 +2,13 @@ package de.htwberlin.werbringts.web.api;
 
 import java.util.List;
 
-public class BringlistCreateRequest {
+public class BringlistManipulationRequest {
 
     private String listName;
     private String listDescription;
     private List<Long> productId;
 
-    public BringlistCreateRequest(String listName, String listDescription, List<Long> productId) {
+    public BringlistManipulationRequest(String listName, String listDescription, List<Long> productId) {
         this.listName = listName;
         this.listDescription = listDescription;
         this.productId = productId;

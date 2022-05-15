@@ -2,11 +2,10 @@ package de.htwberlin.werbringts.service;
 
 import de.htwberlin.werbringts.persistence.ItemsBroughtEntity;
 import de.htwberlin.werbringts.persistence.ItemsBroughtRepository;
-import de.htwberlin.werbringts.persistence.PersonEntity;
-import de.htwberlin.werbringts.persistence.ProductEntity;
+import de.htwberlin.werbringts.web.api.Bringlist;
+import de.htwberlin.werbringts.web.api.BringlistManipulationRequest;
 import de.htwberlin.werbringts.web.api.ItemsBrought;
-import de.htwberlin.werbringts.web.api.ItemsBroughtCreateRequest;
-import de.htwberlin.werbringts.web.api.Product;
+import de.htwberlin.werbringts.web.api.ItemsBroughtManipulationRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,12 +27,26 @@ public class ItemsBroughtService {
                 .collect(Collectors.toList());
     }
 
-    public ItemsBrought create(ItemsBroughtCreateRequest request){
+    public ItemsBrought create(ItemsBroughtManipulationRequest request){
         var itemsBroughtEntity = new ItemsBroughtEntity(request.getQuantityBrought());
         itemsBroughtRepository.save(itemsBroughtEntity);
         return transformEntity(itemsBroughtEntity);
 
     }
+
+    public ItemsBrought update (Long id, ItemsBroughtManipulationRequest request){
+        var itemsBroughtEntityOptional = itemsBroughtRepository.findById(id);
+        if (itemsBroughtEntityOptional.isEmpty()){
+            return null;
+        }
+
+        var itemsBroughtEntity = itemsBroughtEntityOptional.get();
+        itemsBroughtEntity.setQuantityBrought(request.getQuantityBrought());
+       // itemsBroughtEntity.setPerson(request.getPersonId());
+       // itemsBroughtEntity.setProduct(request.getProductId());
+        return transformEntity(itemsBroughtEntity);
+    }
+
 
     public boolean deleteById(Long id){
         if (!itemsBroughtRepository.existsById(id)){

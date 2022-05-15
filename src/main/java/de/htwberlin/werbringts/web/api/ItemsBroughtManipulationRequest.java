@@ -1,11 +1,11 @@
 package de.htwberlin.werbringts.web.api;
 
-public class ItemsBroughtCreateRequest {
+public class ItemsBroughtManipulationRequest {
     private Long personId;
     private Long productId;
     private int quantityBrought;
 
-    public ItemsBroughtCreateRequest(Long personId, Long productId, int quantityBrought) {
+    public ItemsBroughtManipulationRequest(Long personId, Long productId, int quantityBrought) {
         this.personId = personId;
         this.productId = productId;
         this.quantityBrought = quantityBrought;
