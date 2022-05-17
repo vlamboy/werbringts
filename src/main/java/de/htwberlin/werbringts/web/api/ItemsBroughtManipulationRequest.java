@@ -1,30 +1,35 @@
 package de.htwberlin.werbringts.web.api;
 
+import de.htwberlin.werbringts.persistence.PersonEntity;
+import de.htwberlin.werbringts.persistence.ProductEntity;
+
+import javax.swing.text.html.parser.Entity;
+
 public class ItemsBroughtManipulationRequest {
-    private Long personId;
-    private Long productId;
+    private PersonEntity person;
+    private ProductEntity product;
     private int quantityBrought;
 
-    public ItemsBroughtManipulationRequest(Long personId, Long productId, int quantityBrought) {
-        this.personId = personId;
-        this.productId = productId;
+    public ItemsBroughtManipulationRequest(PersonEntity person, ProductEntity product, int quantityBrought) {
+        this.person = person;
+        this.product = product;
         this.quantityBrought = quantityBrought;
     }
 
-    public Long getPersonId() {
-        return personId;
+    public PersonEntity getPerson() {
+        return person;
     }
 
-    public void setPersonId(Long personId) {
-        this.personId = personId;
+    public void setPerson(PersonEntity person) {
+        this.person = person;
     }
 
-    public Long getProductId() {
-        return productId;
+    public ProductEntity getProduct() {
+        return product;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProduct(ProductEntity product) {
+        this.product = product;
     }
 
     public int getQuantityBrought() {

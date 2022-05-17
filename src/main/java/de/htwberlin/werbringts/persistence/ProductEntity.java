@@ -31,13 +31,11 @@ public class ProductEntity {
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<ItemsBroughtEntity> itemsBrought = new ArrayList<>();
 
-    public ProductEntity(String productName, int quantity, boolean isClosed, BringlistEntity bringlist) {
+    public ProductEntity(String productName, int quantity, boolean isClosed) {
         this.productName = productName;
         this.quantity = quantity;
         this.isClosed = isClosed;
-        this.bringlist = bringlist;
     }
-
 
     protected ProductEntity() {}
 
@@ -67,14 +65,6 @@ public class ProductEntity {
 
     public void setClosed(boolean closed) {
         isClosed = closed;
-    }
-
-    public BringlistEntity getBringlist() {
-        return bringlist;
-    }
-
-    public void setBringlist(BringlistEntity bringlist) {
-        this.bringlist = bringlist;
     }
 
     public List<ItemsBroughtEntity> getItemsBrought() {

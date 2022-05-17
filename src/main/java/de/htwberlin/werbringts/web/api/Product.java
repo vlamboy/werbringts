@@ -8,17 +8,15 @@ public class Product {
     private String productName;
     private int quatity;
     private boolean isClosed;
-    private long bringlistId;
-    private List<Long> itemsBroughtId;
+    private List<ItemsBrought> itemsBrought;
 
 
-    public Product(long productId, String productName, int quatity, boolean isClosed, long bringlistId, List<Long> itemsBroughtId) {
+    public Product(long productId, String productName, int quatity, boolean isClosed, List<ItemsBrought> itemsBrought) {
         this.productId = productId;
         this.productName = productName;
         this.quatity = quatity;
         this.isClosed = isClosed;
-        this.bringlistId = bringlistId;
-        this.itemsBroughtId = itemsBroughtId;
+        this.itemsBrought = itemsBrought;
     }
 
     public long getProductId() {
@@ -45,14 +43,6 @@ public class Product {
         this.quatity = quatity;
     }
 
-    public long getBringlistId() {
-        return bringlistId;
-    }
-
-    public void setBringlistId(long bringlistId) {
-        this.bringlistId = bringlistId;
-    }
-
     public boolean isClosed() {
         return isClosed;
     }
@@ -61,11 +51,11 @@ public class Product {
         isClosed = closed;
     }
 
-    public List<Long> getItemsBroughtId() {
-        return itemsBroughtId;
+    public List<ItemsBrought> getItemsBrought() {
+        return itemsBrought;
     }
 
-    public void setItemsBroughtId(List<Long> itemsBroughtId) {
-        this.itemsBroughtId = itemsBroughtId;
+    public void setItemsBroughtId(List<ItemsBrought> itemsBrought) {
+        this.itemsBrought = itemsBrought;
     }
 }

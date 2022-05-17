@@ -1,17 +1,19 @@
 package de.htwberlin.werbringts.web.api;
 
+import de.htwberlin.werbringts.persistence.ProductEntity;
+
 import java.util.List;
 
 public class BringlistManipulationRequest {
 
     private String listName;
     private String listDescription;
-    private List<Long> productId;
+    private List<ProductEntity> product;
 
-    public BringlistManipulationRequest(String listName, String listDescription, List<Long> productId) {
+    public BringlistManipulationRequest(String listName, String listDescription, List<ProductEntity> product) {
         this.listName = listName;
         this.listDescription = listDescription;
-        this.productId = productId;
+        this.product = product;
     }
 
     public String getListName() {
@@ -30,11 +32,7 @@ public class BringlistManipulationRequest {
         this.listDescription = listDescription;
     }
 
-    public List<Long> getProductId() {
-        return productId;
-    }
+    public List<ProductEntity> getProduct() {return product;}
 
-    public void setProductId(List<Long> productId) {
-        this.productId = productId;
-    }
+    public void setProduct(List<ProductEntity> product) {this.product = product;}
 }

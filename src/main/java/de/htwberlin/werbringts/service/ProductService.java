@@ -1,12 +1,10 @@
 package de.htwberlin.werbringts.service;
 
 import de.htwberlin.werbringts.persistence.ItemsBroughtEntity;
+import de.htwberlin.werbringts.persistence.PersonEntity;
 import de.htwberlin.werbringts.persistence.ProductEntity;
 import de.htwberlin.werbringts.persistence.ProductRepository;
-import de.htwberlin.werbringts.web.api.Person;
-import de.htwberlin.werbringts.web.api.PersonManipulationRequest;
-import de.htwberlin.werbringts.web.api.Product;
-import de.htwberlin.werbringts.web.api.ProductManipulationRequest;
+import de.htwberlin.werbringts.web.api.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +25,7 @@ public class ProductService {
     }
 
     public Product create(ProductManipulationRequest request){
-        var productEntity = new ProductEntity(request.getProductName(), request.getQuantity(), request.isClosed(), request.getBringlist());
+        var productEntity = new ProductEntity(request.getProductName(), request.getQuantity(), request.isClosed());
         productEntity = productRepository.save(productEntity);
         return transformEntity(productEntity);
     }
@@ -41,9 +39,8 @@ public class ProductService {
         var productEntity = productEntityOptional.get();
         productEntity.setProductName(request.getProductName());
         productEntity.setQuantity(request.getQuantity());
-     //   productEntity.setClosed(request.getClosed);
-        productEntity.setBringlist(request.getBringlist());
-       // productEntity.setItemsBrought(request.getItemsBroughtId());
+        productEntity.setClosed(request.isClosed());
+        productEntity.setItemsBrought(request.getItemsBrought());
 
         return transformEntity(productEntity);
     }
@@ -56,15 +53,40 @@ public class ProductService {
         return true;
     }
 
+    private Person transformPersonEntity(PersonEntity personEntity){
+        return new Person(
+                personEntity.getPersonId(),
+                personEntity.getPersonName(),
+                personEntity.getItemsBrought().stream().map(ItemsBroughtEntity::getItemsBroughtId).collect(Collectors.toList())
+        );
+    }
+
+    private Product transformProductEntity(ProductEntity productEntity){
+        return new Product(
+                productEntity.getProductId(),
+                productEntity.getProductName(),
+                productEntity.getQuantity(),
+                productEntity.isClosed(),
+                productEntity.getItemsBrought()
+        );
+    }
+
+    private ItemsBrought transformProductEntity(ItemsBroughtEntity itemsBroughtEntity){
+        return new ItemsBrought(
+                itemsBroughtEntity.getItemsBroughtId(),
+                itemsBroughtEntity.getProduct(),
+                itemsBroughtEntity.getPerson(),
+                itemsBroughtEntity.getQuantityBrought()
+        );
+    }
+
     private Product transformEntity(ProductEntity productEntity){
         return new Product(
                 productEntity.getProductId(),
                 productEntity.getProductName(),
                 productEntity.getQuantity(),
                 productEntity.isClosed(),
-                productEntity.getBringlist().getBringlistId(),
-                productEntity.getItemsBrought().stream().map(ItemsBroughtEntity::getItemsBroughtId).collect(Collectors.toList())
-
+                productEntity.getItemsBrought()
         );
     }
 

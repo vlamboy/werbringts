@@ -25,7 +25,7 @@ public class BringlistService {
     }
 
     public Bringlist create(BringlistManipulationRequest request){
-        var bringlistEntity = new BringlistEntity(request.getListName(), request.getListDescription());
+        var bringlistEntity = new BringlistEntity(request.getListName(), request.getListDescription());//, request.getProductId());
         bringlistEntity = bringlistRepository.save(bringlistEntity);
 
         return transformEntity(bringlistEntity);
@@ -52,6 +52,7 @@ public class BringlistService {
         bringlistRepository.deleteById(id);
         return true;
     }
+
 
     private Bringlist transformEntity(BringlistEntity bringlistEntity){
 
