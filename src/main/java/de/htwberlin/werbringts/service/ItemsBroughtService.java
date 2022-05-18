@@ -27,7 +27,7 @@ public class ItemsBroughtService {
     }
 
     public ItemsBrought create(ItemsBroughtManipulationRequest request){
-            var itemsBroughtEntity = new ItemsBroughtEntity(request.getQuantityBrought());
+            var itemsBroughtEntity = new ItemsBroughtEntity(request.getQuantityBrought(), request.getProduct(), request.getPerson());
         itemsBroughtRepository.save(itemsBroughtEntity);
         return transformEntity(itemsBroughtEntity);
 
@@ -58,8 +58,7 @@ public class ItemsBroughtService {
     private Person transformPersonEntity(PersonEntity personEntity){
         return new Person(
                 personEntity.getPersonId(),
-                personEntity.getPersonName(),
-                personEntity.getItemsBrought()//.stream().map(ItemsBroughtEntity::getItemsBroughtId).collect(Collectors.toList())
+                personEntity.getPersonName()
         );
     }
 

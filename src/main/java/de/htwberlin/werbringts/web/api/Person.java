@@ -8,13 +8,11 @@ public class Person {
 
     private long personId;
     private String personName;
-    private List<ItemsBroughtEntity> itemsBrought;
 
 
-    public Person(long personId, String personName, List<ItemsBroughtEntity> itemsBrought) {
+    public Person(long personId, String personName) {
         this.personId = personId;
         this.personName = personName;
-        this.itemsBrought = itemsBrought;
     }
 
     public long getPersonId() {
@@ -33,11 +31,4 @@ public class Person {
         this.personName = personName;
     }
 
-    public List<ItemsBroughtEntity> getItemsBrought() {
-        return itemsBrought;
-    }
-
-    public void setItemsBrought(List<ItemsBroughtEntity> itemsBrought) {
-        this.itemsBrought = itemsBrought;
-    }
 }

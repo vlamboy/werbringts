@@ -40,7 +40,7 @@ public class BringlistService {
         var bringlistEntity = bringlistEntityOptional.get();
         bringlistEntity.setListName(request.getListName());
         bringlistEntity.setListDescription(request.getListDescription());
- //       bringlistEntity.setProducts(request.getProductId());
+        bringlistEntity.setProducts(request.getProduct());
         bringlistEntity = bringlistRepository.save(bringlistEntity);
         return transformEntity(bringlistEntity);
     }

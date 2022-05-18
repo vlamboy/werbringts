@@ -41,7 +41,6 @@ public class PersonService {
 
         var personEntity = personEntityOptional.get();
         personEntity.setPersonName(request.getPersonName());
-      //  personEntity.setItemsBrought(request.getItemsBroughtId());
 
         return transformEntity(personEntity);
     }
@@ -57,8 +56,8 @@ public class PersonService {
     private Person transformEntity (PersonEntity personEntity){
         return new Person(
                 personEntity.getPersonId(),
-                personEntity.getPersonName(),
-                personEntity.getItemsBrought());
+                personEntity.getPersonName()
+        );
     }
 
 }

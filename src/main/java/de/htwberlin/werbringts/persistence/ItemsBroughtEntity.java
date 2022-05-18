@@ -24,13 +24,13 @@ public class ItemsBroughtEntity {
     @JoinColumn(name = "personId", referencedColumnName = "personId")
     private PersonEntity person;
 
-
-    public ItemsBroughtEntity (int quantityBrought) {
+    public ItemsBroughtEntity(int quantityBrought, ProductEntity product, PersonEntity person) {
         this.quantityBrought = quantityBrought;
+        this.product = product;
+        this.person = person;
     }
 
-    protected ItemsBroughtEntity() {
-    }
+    protected ItemsBroughtEntity() {}
 
     public long getItemsBroughtId() {return itemsBroughtId;}
 

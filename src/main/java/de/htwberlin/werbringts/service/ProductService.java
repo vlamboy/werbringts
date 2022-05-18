@@ -57,8 +57,7 @@ public class ProductService {
 
         return new Person(
                 personEntity.getPersonId(),
-                personEntity.getPersonName(),
-                personEntity.getItemsBrought()
+                personEntity.getPersonName()
         );
     }
 
