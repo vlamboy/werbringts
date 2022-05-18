@@ -34,27 +34,16 @@ public class ItemsBroughtEntity {
 
     public long getItemsBroughtId() {return itemsBroughtId;}
 
-    public int getQuantityBrought() {
-        return quantityBrought;
-    }
+    public int getQuantityBrought() {return quantityBrought;}
 
-    public void setQuantityBrought(int quantityBrought) {
-        this.quantityBrought = quantityBrought;
-    }
+    public void setQuantityBrought(int quantityBrought) {this.quantityBrought = quantityBrought;}
 
-    public ProductEntity getProduct() {
-        return product;
-    }
+    public ProductEntity getProduct() {return product;}
 
-    public void setProduct(ProductEntity product) {
-        this.product = product;
-    }
+    public void setProduct(ProductEntity product) {this.product = product;}
 
-    public PersonEntity getPerson() {
-        return person;
-    }
+    public PersonEntity getPerson() {return person;}
 
-    public void setPerson(PersonEntity person) {
-        this.person = person;
-    }
+    public void setPerson(PersonEntity person) {this.person = person;}
+
 }

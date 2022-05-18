@@ -59,25 +59,34 @@ public class ItemsBroughtService {
         return new Person(
                 personEntity.getPersonId(),
                 personEntity.getPersonName(),
-                personEntity.getItemsBrought().stream().map(ItemsBroughtEntity::getItemsBroughtId).collect(Collectors.toList())
+                personEntity.getItemsBrought()//.stream().map(ItemsBroughtEntity::getItemsBroughtId).collect(Collectors.toList())
         );
     }
 
     private Product transformProductEntity(ProductEntity productEntity){
+
+        List <ItemsBrought> transformedListItemsBrought = null;
+        for (ItemsBroughtEntity i : productEntity.getItemsBrought()){
+            ItemsBrought listIndex = transformEntity(i);
+            transformedListItemsBrought.add(listIndex);
+        }
+
         return new Product(
                 productEntity.getProductId(),
                 productEntity.getProductName(),
                 productEntity.getQuantity(),
                 productEntity.isClosed(),
-                productEntity.getItemsBrought()
+
+                // geh durch die liste und ruf für jedes Objekt die methode transform auf
+                transformedListItemsBrought
         );
     }
 
     private ItemsBrought transformEntity(ItemsBroughtEntity itemsBroughtEntity){
         return new ItemsBrought(
                 itemsBroughtEntity.getItemsBroughtId(),
-                itemsBroughtEntity.getPerson(transformPersonEntity()),
-                itemsBroughtEntity.getProduct(transformProductEntity()),
+                transformPersonEntity(itemsBroughtEntity.getPerson()),
+                transformProductEntity(itemsBroughtEntity.getProduct()),
                 itemsBroughtEntity.getQuantityBrought()
         );
     }

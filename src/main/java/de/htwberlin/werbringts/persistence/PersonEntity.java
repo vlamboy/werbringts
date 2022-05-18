@@ -18,6 +18,10 @@ public class PersonEntity {
     @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
     private List<ItemsBroughtEntity> itemsBrought = new ArrayList<>();
 
+    public PersonEntity(String personName, List<ItemsBroughtEntity> itemsBrought) {
+        this.personName = personName;
+        this.itemsBrought = itemsBrought;
+    }
 
     public PersonEntity(String personName) {
         this.personName = personName;

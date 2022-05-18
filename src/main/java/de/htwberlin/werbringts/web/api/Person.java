@@ -1,18 +1,20 @@
 package de.htwberlin.werbringts.web.api;
 
+import de.htwberlin.werbringts.persistence.ItemsBroughtEntity;
+
 import java.util.List;
 
 public class Person {
 
     private long personId;
     private String personName;
-    private List<Long> itemsBroughtId;
+    private List<ItemsBroughtEntity> itemsBrought;
 
 
-    public Person(long personId, String personName, List<Long> itemsBroughtId) {
+    public Person(long personId, String personName, List<ItemsBroughtEntity> itemsBrought) {
         this.personId = personId;
         this.personName = personName;
-        this.itemsBroughtId = itemsBroughtId;
+        this.itemsBrought = itemsBrought;
     }
 
     public long getPersonId() {
@@ -31,11 +33,11 @@ public class Person {
         this.personName = personName;
     }
 
-    public List<Long> getItemsBroughtId() {
-        return itemsBroughtId;
+    public List<ItemsBroughtEntity> getItemsBrought() {
+        return itemsBrought;
     }
 
-    public void setItemsBroughtId(List<Long> itemsBroughtId) {
-        this.itemsBroughtId = itemsBroughtId;
+    public void setItemsBrought(List<ItemsBroughtEntity> itemsBrought) {
+        this.itemsBrought = itemsBrought;
     }
 }

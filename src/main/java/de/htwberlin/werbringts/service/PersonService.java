@@ -58,7 +58,7 @@ public class PersonService {
         return new Person(
                 personEntity.getPersonId(),
                 personEntity.getPersonName(),
-                personEntity.getItemsBrought().stream().map(ItemsBroughtEntity::getItemsBroughtId).collect(Collectors.toList()));
+                personEntity.getItemsBrought());
     }
 
 }
