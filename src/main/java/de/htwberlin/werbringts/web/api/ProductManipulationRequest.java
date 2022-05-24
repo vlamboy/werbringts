@@ -9,13 +9,13 @@ public class ProductManipulationRequest {
     private String productName;
     private int quantity;
     private boolean isClosed;
-    private List<ItemsBroughtEntity> itemsBrought;
+    private long bringlistId;
 
-    public ProductManipulationRequest(String productName, int quantityNeeded, boolean isClosed, List<ItemsBroughtEntity> itemsBrought) {
+    public ProductManipulationRequest(String productName, int quantity, boolean isClosed, long bringlistId) {
         this.productName = productName;
-        this.quantity = quantityNeeded;
+        this.quantity = quantity;
         this.isClosed = isClosed;
-        this.itemsBrought = itemsBrought;
+        this.bringlistId = bringlistId;
     }
 
     public String getProductName() {
@@ -42,7 +42,7 @@ public class ProductManipulationRequest {
         isClosed = closed;
     }
 
-    public List<ItemsBroughtEntity> getItemsBrought() {return itemsBrought;}
-
-    public void setItemsBrought(List<ItemsBroughtEntity> itemsBrought) {this.itemsBrought = itemsBrought;}
+    public long getBringlistId() {
+        return bringlistId;
+    }
 }
