@@ -7,14 +7,14 @@ import java.util.List;
 
 public class ItemsBrought {
     private long itemsBroughtId;
-    private Person person;
-    private Product product;
+    private long personId;
+    private long productId;
     private int quantityBrought;
 
-    public ItemsBrought(long itemsBroughtId, Person person, Product product, int quantityBrought) {
+    public ItemsBrought(long itemsBroughtId, long personId, long productId, int quantityBrought) {
         this.itemsBroughtId = itemsBroughtId;
-        this.person = person;
-        this.product = product;
+        this.personId = personId;
+        this.productId = productId;
         this.quantityBrought = quantityBrought;
     }
 
@@ -26,20 +26,12 @@ public class ItemsBrought {
         this.itemsBroughtId = itemsBroughtId;
     }
 
-    public Person getPerson() {
-        return person;
+    public long getPersonId() {
+        return personId;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
+    public long getProductId() {
+        return productId;
     }
 
     public int getQuantityBrought() {

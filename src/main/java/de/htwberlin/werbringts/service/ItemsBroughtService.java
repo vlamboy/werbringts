@@ -1,9 +1,6 @@
 package de.htwberlin.werbringts.service;
 
-import de.htwberlin.werbringts.persistence.ItemsBroughtEntity;
-import de.htwberlin.werbringts.persistence.ItemsBroughtRepository;
-import de.htwberlin.werbringts.persistence.PersonEntity;
-import de.htwberlin.werbringts.persistence.ProductEntity;
+import de.htwberlin.werbringts.persistence.*;
 import de.htwberlin.werbringts.web.api.*;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +11,14 @@ import java.util.stream.Collectors;
 public class ItemsBroughtService {
 
     private final ItemsBroughtRepository itemsBroughtRepository;
+    private final ProductRepository productRepository;
+    private final PersonRepository personRepository;
 
 
-    public ItemsBroughtService(ItemsBroughtRepository itemsBroughtRepository) {
+    public ItemsBroughtService(ItemsBroughtRepository itemsBroughtRepository, ProductRepository productRepository, PersonRepository personRepository) {
         this.itemsBroughtRepository = itemsBroughtRepository;
+        this.productRepository = productRepository;
+        this.personRepository = personRepository;
     }
 
     public List<ItemsBrought> findAll(){
@@ -27,7 +28,9 @@ public class ItemsBroughtService {
     }
 
     public ItemsBrought create(ItemsBroughtManipulationRequest request){
-            var itemsBroughtEntity = new ItemsBroughtEntity(request.getQuantityBrought(), request.getProduct(), request.getPerson());
+        var product = productRepository.findById(request.getProductId());
+        var person = personRepository.findById(request.getPersonId());
+        var itemsBroughtEntity = new ItemsBroughtEntity(person.get(), product.get(),  request.getQuantityBrought());
         itemsBroughtRepository.save(itemsBroughtEntity);
         return transformEntity(itemsBroughtEntity);
 
@@ -41,8 +44,7 @@ public class ItemsBroughtService {
 
         var itemsBroughtEntity = itemsBroughtEntityOptional.get();
         itemsBroughtEntity.setQuantityBrought(request.getQuantityBrought());
-        itemsBroughtEntity.setPerson(request.getPerson());
-        itemsBroughtEntity.setProduct(request.getProduct());
+
         return transformEntity(itemsBroughtEntity);
     }
 
@@ -77,15 +79,15 @@ public class ItemsBroughtService {
                 productEntity.isClosed(),
 
                 // geh durch die liste und ruf für jedes Objekt die methode transform auf
-                transformedListItemsBrought
+                productEntity.getBringlist().getBringlistId(), transformedListItemsBrought
         );
     }
 
     private ItemsBrought transformEntity(ItemsBroughtEntity itemsBroughtEntity){
         return new ItemsBrought(
                 itemsBroughtEntity.getItemsBroughtId(),
-                transformPersonEntity(itemsBroughtEntity.getPerson()),
-                transformProductEntity(itemsBroughtEntity.getProduct()),
+                itemsBroughtEntity.getPerson().getPersonId(),
+                itemsBroughtEntity.getProduct().getProductId(),
                 itemsBroughtEntity.getQuantityBrought()
         );
     }

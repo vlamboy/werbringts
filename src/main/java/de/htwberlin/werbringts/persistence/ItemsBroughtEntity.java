@@ -24,7 +24,7 @@ public class ItemsBroughtEntity {
     @JoinColumn(name = "personId", referencedColumnName = "personId")
     private PersonEntity person;
 
-    public ItemsBroughtEntity(int quantityBrought, ProductEntity product, PersonEntity person) {
+    public ItemsBroughtEntity(PersonEntity person, ProductEntity product, int quantityBrought) {
         this.quantityBrought = quantityBrought;
         this.product = product;
         this.person = person;

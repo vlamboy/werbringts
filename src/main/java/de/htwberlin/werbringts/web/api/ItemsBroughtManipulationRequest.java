@@ -6,33 +6,27 @@ import de.htwberlin.werbringts.persistence.ProductEntity;
 import javax.swing.text.html.parser.Entity;
 
 public class ItemsBroughtManipulationRequest {
-    private PersonEntity person;
-    private ProductEntity product;
+    private long personId;
+    private long productId;
     private int quantityBrought;
 
-    public ItemsBroughtManipulationRequest(PersonEntity person, ProductEntity product, int quantityBrought) {
-        this.person = person;
-        this.product = product;
+
+    public ItemsBroughtManipulationRequest(long personId, long productId, int quantityBrought) {
+        this.personId = personId;
+        this.productId = productId;
         this.quantityBrought = quantityBrought;
     }
 
     public ItemsBroughtManipulationRequest() {}
 
-    public PersonEntity getPerson() {
-        return person;
+    public long getPersonId() {
+        return personId;
     }
 
-    public void setPerson(PersonEntity person) {
-        this.person = person;
+    public long getProductId() {
+        return productId;
     }
 
-    public ProductEntity getProduct() {
-        return product;
-    }
-
-    public void setProduct(ProductEntity product) {
-        this.product = product;
-    }
 
     public int getQuantityBrought() {
         return quantityBrought;

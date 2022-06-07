@@ -8,14 +8,16 @@ public class Product {
     private String productName;
     private int quatity;
     private boolean isClosed;
+    private long bringlistId;
     private List<ItemsBrought> itemsBrought;
 
 
-    public Product(long productId, String productName, int quatity, boolean isClosed, List<ItemsBrought> itemsBrought) {
+    public Product(long productId, String productName, int quatity, boolean isClosed, long bringlistId, List<ItemsBrought> itemsBrought) {
         this.productId = productId;
         this.productName = productName;
         this.quatity = quatity;
         this.isClosed = isClosed;
+        this.bringlistId = bringlistId;
         this.itemsBrought = itemsBrought;
     }
 
