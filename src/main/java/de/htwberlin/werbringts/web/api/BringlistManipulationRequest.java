@@ -16,6 +16,8 @@ public class BringlistManipulationRequest {
         this.product = product;
     }
 
+    public BringlistManipulationRequest() {}
+
     public String getListName() {
         return listName;
     }

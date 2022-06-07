@@ -12,9 +12,9 @@ public class PersonManipulationRequest {
         this.itemsBroughtId = itemsBroughtId;
     }
 
-    public String getPersonName() {
-        return personName;
-    }
+    public PersonManipulationRequest() {}
+
+    public String getPersonName() {return personName;}
 
     public void setPersonName(String personName) {
         this.personName = personName;

@@ -18,6 +18,8 @@ public class ProductManipulationRequest {
         this.itemsBrought = itemsBrought;
     }
 
+    public ProductManipulationRequest() {}
+
     public String getProductName() {
         return productName;
     }

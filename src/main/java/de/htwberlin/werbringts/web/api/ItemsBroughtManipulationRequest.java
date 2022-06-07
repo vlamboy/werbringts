@@ -16,6 +16,8 @@ public class ItemsBroughtManipulationRequest {
         this.quantityBrought = quantityBrought;
     }
 
+    public ItemsBroughtManipulationRequest() {}
+
     public PersonEntity getPerson() {
         return person;
     }
