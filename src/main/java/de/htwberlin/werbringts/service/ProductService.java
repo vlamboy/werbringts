@@ -53,52 +53,54 @@ public class ProductService {
         return true;
     }
 
-    private Person transformPersonEntity(PersonEntity personEntity){
-
-        return new Person(
-                personEntity.getPersonId(),
-                personEntity.getPersonName()
-        );
-    }
-
-    private Product transformProductEntity(ProductEntity productEntity){
-        List <ItemsBrought> transformedListItemsBrought = null;
-        for (ItemsBroughtEntity i : productEntity.getItemsBrought()){
-            ItemsBrought listIndex = transformItemsBroughtEntity(i);
-            transformedListItemsBrought.add(listIndex);
-        }
-
-        return new Product(
-                productEntity.getProductId(),
-                productEntity.getProductName(),
-                productEntity.getQuantity(),
-                productEntity.isClosed(),
-                productEntity.getBringlist().getBringlistId(), transformedListItemsBrought
-        );
-    }
-
-    private ItemsBrought transformItemsBroughtEntity(ItemsBroughtEntity itemsBroughtEntity){
-
-        return new ItemsBrought(
-                itemsBroughtEntity.getItemsBroughtId(),
-                itemsBroughtEntity.getPerson().getPersonId(),
-                itemsBroughtEntity.getProduct().getProductId(),
-                itemsBroughtEntity.getQuantityBrought()
-        );
-    }
+//    private Person transformPersonEntity(PersonEntity personEntity){
+//
+//        return new Person(
+//                personEntity.getPersonId(),
+//                personEntity.getPersonName()
+//        );
+//    }
+//
+//    private Product transformProductEntity(ProductEntity productEntity){
+//        List <ItemsBrought> transformedListItemsBrought = null;
+//        for (ItemsBroughtEntity i : productEntity.getItemsBrought()){
+//            ItemsBrought listIndex = transformItemsBroughtEntity(i);
+//            transformedListItemsBrought.add(listIndex);
+//        }
+//
+//        return new Product(
+//                productEntity.getProductId(),
+//                productEntity.getProductName(),
+//                productEntity.getQuantity(),
+//                productEntity.isClosed(),
+//                productEntity.getBringlist().getBringlistId(),
+//                transformedListItemsBrought
+//        );
+//    }
+//
+//    private ItemsBrought transformItemsBroughtEntity(ItemsBroughtEntity itemsBroughtEntity){
+//
+//        return new ItemsBrought(
+//                itemsBroughtEntity.getItemsBroughtId(),
+//                itemsBroughtEntity.getPerson().getPersonId(),
+//                itemsBroughtEntity.getProduct().getProductId(),
+//                itemsBroughtEntity.getQuantityBrought()
+//        );
+//    }
 
     private Product transformEntity(ProductEntity productEntity){
-        List <ItemsBrought> transformedListItemsBrought = null;
-        for (ItemsBroughtEntity i : productEntity.getItemsBrought()){
-            ItemsBrought listIndex = transformItemsBroughtEntity(i);
-            transformedListItemsBrought.add(listIndex);
-        }
+//        List <ItemsBrought> transformedListItemsBrought = null;
+//        for (ItemsBroughtEntity i : productEntity.getItemsBrought()){
+//            ItemsBrought listIndex = transformItemsBroughtEntity(i);
+//            transformedListItemsBrought.add(listIndex);
+//        }
         return new Product(
                 productEntity.getProductId(),
                 productEntity.getProductName(),
                 productEntity.getQuantity(),
                 productEntity.isClosed(),
-                productEntity.getBringlist().getBringlistId(), transformedListItemsBrought
+                productEntity.getBringlist().getBringlistId(),
+                productEntity.getItemsBrought().stream().map(ItemsBroughtEntity::getItemsBroughtId).collect(Collectors.toList())
         );
     }
 

@@ -57,31 +57,31 @@ public class ItemsBroughtService {
         return true;
     }
 
-    private Person transformPersonEntity(PersonEntity personEntity){
-        return new Person(
-                personEntity.getPersonId(),
-                personEntity.getPersonName()
-        );
-    }
+//    private Person transformPersonEntity(PersonEntity personEntity){
+//        return new Person(
+//                personEntity.getPersonId(),
+//                personEntity.getPersonName()
+//        );
+//    }
 
-    private Product transformProductEntity(ProductEntity productEntity){
-
-        List <ItemsBrought> transformedListItemsBrought = null;
-        for (ItemsBroughtEntity i : productEntity.getItemsBrought()){
-            ItemsBrought listIndex = transformEntity(i);
-            transformedListItemsBrought.add(listIndex);
-        }
-
-        return new Product(
-                productEntity.getProductId(),
-                productEntity.getProductName(),
-                productEntity.getQuantity(),
-                productEntity.isClosed(),
-
-                // geh durch die liste und ruf für jedes Objekt die methode transform auf
-                productEntity.getBringlist().getBringlistId(), transformedListItemsBrought
-        );
-    }
+//    private Product transformProductEntity(ProductEntity productEntity){
+//
+//        List <Long> transformedListItemsBrought = null;
+//        for (ItemsBroughtEntity i : productEntity.getItemsBrought()){
+//            ItemsBrought listIndex = transformEntity(i);
+//            transformedListItemsBrought.add(listIndex);
+//        }
+//
+//        return new Product(
+//                productEntity.getProductId(),
+//                productEntity.getProductName(),
+//                productEntity.getQuantity(),
+//                productEntity.isClosed(),
+//
+//                // geh durch die liste und ruf für jedes Objekt die methode transform auf
+//                productEntity.getBringlist().getBringlistId(), transformedListItemsBrought
+//        );
+//    }
 
     private ItemsBrought transformEntity(ItemsBroughtEntity itemsBroughtEntity){
         return new ItemsBrought(

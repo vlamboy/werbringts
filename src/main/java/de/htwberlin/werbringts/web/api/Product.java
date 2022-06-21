@@ -6,19 +6,19 @@ public class Product {
 
     private long productId;
     private String productName;
-    private int quatity;
+    private int quantity;
     private boolean isClosed;
     private long bringlistId;
-    private List<ItemsBrought> itemsBrought;
+    private List<Long> itemsBroughtId;
 
 
-    public Product(long productId, String productName, int quatity, boolean isClosed, long bringlistId, List<ItemsBrought> itemsBrought) {
+    public Product(long productId, String productName, int quantity, boolean isClosed, long bringlistId, List<Long> itemsBroughtId) {
         this.productId = productId;
         this.productName = productName;
-        this.quatity = quatity;
+        this.quantity = quantity;
         this.isClosed = isClosed;
         this.bringlistId = bringlistId;
-        this.itemsBrought = itemsBrought;
+        this.itemsBroughtId = itemsBroughtId;
     }
 
     public long getProductId() {
@@ -37,12 +37,12 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getQuatity() {
-        return quatity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuatity(int quatity) {
-        this.quatity = quatity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public boolean isClosed() {
@@ -53,11 +53,11 @@ public class Product {
         isClosed = closed;
     }
 
-    public List<ItemsBrought> getItemsBrought() {
-        return itemsBrought;
+    public List<Long> getItemsBroughtId() {
+        return itemsBroughtId;
     }
 
-    public void setItemsBroughtId(List<ItemsBrought> itemsBrought) {
-        this.itemsBrought = itemsBrought;
+    public void setItemsBroughtId(List<Long> itemsBrought) {
+        this.itemsBroughtId = itemsBrought;
     }
 }
