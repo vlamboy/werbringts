@@ -24,6 +24,12 @@ public class ProductService {
         return product.stream().map(this::transformEntity).collect(Collectors.toList());
     }
 
+    public List<Product> findByBringlistId(Long id){
+        BringlistEntity bringlistEntity = bringlistRepository.findById(id).orElseThrow();
+        List<ProductEntity> product = productRepository.findAllByBringlist(bringlistEntity);
+        return product.stream().map(this::transformEntity).collect(Collectors.toList());
+    }
+
     public Product create(ProductManipulationRequest request){
         Optional<BringlistEntity> bringlist = bringlistRepository.findById(request.getBringlistId());
         var productEntity = new ProductEntity(request.getProductName(), request.getQuantity(), request.isClosed(), bringlist.get());
@@ -53,47 +59,9 @@ public class ProductService {
         return true;
     }
 
-//    private Person transformPersonEntity(PersonEntity personEntity){
-//
-//        return new Person(
-//                personEntity.getPersonId(),
-//                personEntity.getPersonName()
-//        );
-//    }
-//
-//    private Product transformProductEntity(ProductEntity productEntity){
-//        List <ItemsBrought> transformedListItemsBrought = null;
-//        for (ItemsBroughtEntity i : productEntity.getItemsBrought()){
-//            ItemsBrought listIndex = transformItemsBroughtEntity(i);
-//            transformedListItemsBrought.add(listIndex);
-//        }
-//
-//        return new Product(
-//                productEntity.getProductId(),
-//                productEntity.getProductName(),
-//                productEntity.getQuantity(),
-//                productEntity.isClosed(),
-//                productEntity.getBringlist().getBringlistId(),
-//                transformedListItemsBrought
-//        );
-//    }
-//
-//    private ItemsBrought transformItemsBroughtEntity(ItemsBroughtEntity itemsBroughtEntity){
-//
-//        return new ItemsBrought(
-//                itemsBroughtEntity.getItemsBroughtId(),
-//                itemsBroughtEntity.getPerson().getPersonId(),
-//                itemsBroughtEntity.getProduct().getProductId(),
-//                itemsBroughtEntity.getQuantityBrought()
-//        );
-//    }
 
     private Product transformEntity(ProductEntity productEntity){
-//        List <ItemsBrought> transformedListItemsBrought = null;
-//        for (ItemsBroughtEntity i : productEntity.getItemsBrought()){
-//            ItemsBrought listIndex = transformItemsBroughtEntity(i);
-//            transformedListItemsBrought.add(listIndex);
-//        }
+
         return new Product(
                 productEntity.getProductId(),
                 productEntity.getProductName(),

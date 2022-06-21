@@ -18,10 +18,13 @@ public class ProductRestController {
         this.productService = productService;
     }
 
-
     @GetMapping(path = "/api/v1/products")
-    public ResponseEntity<List<Product>> fetchProducts() {
-        return ResponseEntity.ok(productService.findAll());
+    public ResponseEntity<List<Product>> fetchProducts(@RequestParam(required = false) Long bringListId) {
+        if (bringListId == null) {
+            return ResponseEntity.ok(productService.findAll());
+        }
+
+        return ResponseEntity.ok(productService.findByBringlistId(bringListId));
     }
 
     @PostMapping(path = "/api/v1/products")
