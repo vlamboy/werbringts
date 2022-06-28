@@ -27,10 +27,10 @@ public class BringlistRestController {
 
 
     @PostMapping (path = "/api/v1/bringlists")
-    public ResponseEntity<Void> createBringlist(@RequestBody BringlistManipulationRequest request) throws URISyntaxException {
+    public ResponseEntity<Bringlist> createBringlist(@RequestBody BringlistManipulationRequest request) throws URISyntaxException {
         var bringlist =  bringlistService.create(request);
-                URI uri = new URI("/api/v1/bringlists" + bringlist.getBringlistId());
-        return ResponseEntity.created(uri).build();
+        URI uri = new URI("/api/v1/bringlists/" + bringlist.getBringlistId());
+        return ResponseEntity.ok(bringlist);
     }
 
     @PutMapping(path = "/api/v1/bringlists/{id}")

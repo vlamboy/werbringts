@@ -40,6 +40,12 @@ public class ProductRestController {
         return product != null? ResponseEntity.ok(product) : ResponseEntity.notFound().build();
     }
 
+//    @PutMapping(path = "/api/v1/products/{id}")
+//    public ResponseEntity<Product> updateProductIsClosed(@PathVariable Long id, @RequestBody ProductManipulationRequest request) {
+//        var product =  productService.updateIsClosed(id, request);
+//        return product != null? ResponseEntity.ok(product) : ResponseEntity.notFound().build();
+//    }
+
     @DeleteMapping(path = "/api/v1/products/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         boolean successful = productService.deleteById(id);

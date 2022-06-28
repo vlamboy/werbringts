@@ -51,6 +51,18 @@ public class ProductService {
         return transformEntity(productEntity);
     }
 
+//    public Product updateIsClosed (Long id, ProductManipulationRequest request){
+//        var productEntityOptional = productRepository.findById(id);
+//        if (productEntityOptional.isEmpty()){
+//            return null;
+//        }
+//
+//        var productEntity = productEntityOptional.get();
+//        productEntity.setClosed(true);
+//
+//        return transformEntity(productEntity);
+//    }
+
     public boolean deleteById(Long id){
         if (!productRepository.existsById(id)){
             return false;
