@@ -28,6 +28,7 @@ public class ItemsBroughtRestController {
     @PostMapping(path = "/api/v1/itemsBrought")
     public ResponseEntity<Void> createItemsBrought(@RequestBody ItemsBroughtManipulationRequest request) throws URISyntaxException {
         var itemsBrought = itemsBroughtService.create(request);
+        System.out.println(request.getProductId());
         URI uri = new URI("/api/v1/itemsBrought" + itemsBrought.getItemsBroughtId());
         return ResponseEntity.created(uri).build();
     }
@@ -35,13 +36,13 @@ public class ItemsBroughtRestController {
     @PutMapping(path = "/api/v1/itemsBrought/{id}")
     public ResponseEntity<ItemsBrought> updateItemsBrought(@PathVariable Long id, @RequestBody ItemsBroughtManipulationRequest request) {
         var itemsBrought =  itemsBroughtService.update(id, request);
-        return itemsBrought != null? ResponseEntity.ok(itemsBrought) : ResponseEntity.notFound().build();
+        return itemsBrought != null ? ResponseEntity.ok(itemsBrought) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping(path = "/api/v1/itemsBrought/{id}")
     public ResponseEntity<Void> deleteItemsBrought(@PathVariable Long id) {
         boolean successful = itemsBroughtService.deleteById(id);
-        return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+        return successful ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
 }
