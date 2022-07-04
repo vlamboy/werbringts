@@ -49,7 +49,7 @@ public class ProductRestController {
     @DeleteMapping(path = "/api/v1/products/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         boolean successful = productService.deleteById(id);
-        return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+        return successful ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
 }

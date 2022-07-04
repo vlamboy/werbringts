@@ -30,11 +30,10 @@ public class BringlistRestController {
     public ResponseEntity<Bringlist> createBringlist(@RequestBody BringlistManipulationRequest request) throws URISyntaxException {
         var bringlist =  bringlistService.create(request);
         URI uri = new URI("/api/v1/bringlists/" + bringlist.getBringlistId());
-        //return ResponseEntity.ok(bringlist);
         return ResponseEntity
                 .created(uri)
                 .header("Access-Control-Expose-Headers", "Location")
-                .build();
+                .body(bringlist);
     }
 
     @PutMapping(path = "/api/v1/bringlists/{id}")
