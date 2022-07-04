@@ -28,7 +28,7 @@ public class ProductEntity {
     @JoinColumn(name = "bringlistId", referencedColumnName = "bringlistId")
     private BringlistEntity bringlist;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ItemsBroughtEntity> itemsBrought = new ArrayList<>();
 
     public ProductEntity(String productName, int quantity, boolean isClosed, BringlistEntity bringlist) {
@@ -72,15 +72,8 @@ public class ProductEntity {
         return itemsBrought;
     }
 
-    public void setItemsBrought(List<ItemsBroughtEntity> itemsBrought) {
-        this.itemsBrought = itemsBrought;
-    }
-
     public BringlistEntity getBringlist() {
         return bringlist;
     }
 
-    public void setBringlist(BringlistEntity bringlist) {
-        this.bringlist = bringlist;
-    }
 }
