@@ -57,7 +57,7 @@ public class ProductRestControllerTest {
     @DisplayName("should return 404, when product that should be deleted doesn't exist")
     void deleteProductTest() throws Exception {
         // Arrange
-        doReturn(null).when(productService).deleteById(anyLong());
+        doReturn(false).when(productService).deleteById(anyLong());
         // Act
         mockmvc.perform(delete("/api/v1/products/42"))
         // Assert

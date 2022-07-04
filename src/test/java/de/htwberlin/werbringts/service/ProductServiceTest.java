@@ -40,10 +40,10 @@ public class ProductServiceTest implements WithAssertions {
     }
 
     @Test
-    @DisplayName("should return false, if person to delete does not exist")
+    @DisplayName("should return false, if product to delete does not exist")
     void deleteProductTestFalse(){
         // Arrange
-        Long id = 42L;
+        Long id = 111L;
         // gib mir false zurück, wenn die Methode existsById aufgerufen wird
         doReturn(false).when(productRepository).existsById(id);
 
@@ -53,7 +53,6 @@ public class ProductServiceTest implements WithAssertions {
         // Assert
         // auf diesem Mock soll keine Methode mehr aufgerufen werden,
         // nach dem False soll nichts mehr passieren
-        verifyNoInteractions(productRepository);
         assertThat(actual).isFalse();
     }
 }
