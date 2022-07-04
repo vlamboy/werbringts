@@ -7,5 +7,13 @@ Kurz gesagt, bietet es die Antwort auf die Frage: Wer bringt’s?
 
 # Was kann “werbringts”?
 
-Basis der Anwendung ist ein Liste, die von einem Nutzer erstellt wird. Jede Liste erhält eine individuelle randomisierte URL. Per Link kann der Zugriff mit anderen Personen geteilt werden. So können andere Nutzer:innen ihren Namen und die Lebensmittel beziehungsweise Gegenstände, welche sie mitbringen, in die Liste eintragen. Zusätzlich geben sie die Menge an, welche sie beisteuern. 
-Gegenstände können von der Liste entfernt oder bearbeitet werden. Zusätzlich besteht die Möglichkeit Wünsche zu der Liste hinzuzufügen. Das bedeutet, dass ein Datensatz mit dem Gegenstand und der Menge angelegt wird. Das Namensfeld bleibt frei, sodass sich andere Gäste hier eintragen können und sich damit bereit erklären, diesen Gegenstand mitzubringen.
+Basis der Anwendung ist eine Liste, die von einem/er Nutzer:in erstellt wird. Jede Liste erhält einen Namen, 
+eine Beschreibung sowie eine individuelle URL. Per Link kann der Zugriff mit anderen Personen geteilt werden. 
+Nach der Angabe des Namens jeder/es Nutzer:in kann diese/r entweder selbst Produkte und die benötigte Anzahl hinzufügen 
+oder angeben, wie viele der aufgeführten Lebensmittel beziehungsweise Gegenstände, er/sie mitbringen möchten. 
+Anschließend wird der Name der mitbringenden Person sowie die angegebene Anzahl für alle sichtbar in der Liste angezeigt. 
+Wird das Produkt in voller Anzahl mitgebracht, wird dies visualisiert. Die Nutzer:Innen können sich nun nicht mehr 
+für dieses Produkt eintragen. Wird sich mal bei einem Produkt vertippt oder soll es doch nicht mitgebracht werden, 
+besteht die Möglichkeit, es einfach wieder aus der Liste zu löschen.
+
+Mit werbringts und den damit geschaffenen Möglichkeiten wird die Partyplanung somit immer ein Erfolg.
